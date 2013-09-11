@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export GOPATH=$PWD/
+
+# Abort on errors after this point ...
+set -e
+
+
+echo ""
+echo ".................................................................."
+echo "Formatting the code .............................................."
+echo ".................................................................."
+gofmt -s -w $GOPATH/rundsp/
+echo ""
+

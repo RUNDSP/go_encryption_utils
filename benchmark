@@ -1,0 +1,24 @@
+#!/bin/bash
+
+export GOPATH=$PWD/
+export GOMAXPROCS=1
+
+# Abort on errors after this point ...
+set -e
+
+# Make sure the app builds
+./test || exit $?
+
+echo ""
+echo ".................................................................."
+echo "Running benchmarks ..............................................."
+echo ".................................................................."
+echo ""
+
+go test $@ -bench=".*" -short -benchtime 5s ./encryption_utils/... 2>&1 | grep 'Benchmark_'
+
+echo ""
+echo ".................................................................."
+echo "Finished benchmarks .............................................."
+echo ".................................................................."
+echo ""
