@@ -21,16 +21,22 @@ func BlowfishSpecs(c gospec.Context) {
 		value, err := EncryptBlowfish("0.00", blowfish_key)
 		c.Expect(err, gospec.Equals, nil)
 		c.Expect(value, gospec.Equals, string("0285B20516E533AA"))
+	})
 
-		value, err = EncryptBlowfish("0.12", blowfish_key)
+	c.Specify("Encrypts number with Blowfish", func() {
+		value, err := EncryptBlowfish("0.12", blowfish_key)
 		c.Expect(err, gospec.Equals, nil)
 		c.Expect(value, gospec.Equals, string("599B4625D7390640"))
+	})
 
-		value, err = EncryptBlowfish("123.45", blowfish_key)
+	c.Specify("Encrypts number with Blowfish", func() {
+		value, err := EncryptBlowfish("123.45", blowfish_key)
 		c.Expect(err, gospec.Equals, nil)
 		c.Expect(value, gospec.Equals, string("91CCD93E8EBB89BF"))
+	})
 
-		value, err = EncryptBlowfish("567.89", blowfish_key)
+	c.Specify("Encrypts number with Blowfish", func() {
+		value, err := EncryptBlowfish("567.89", blowfish_key)
 		c.Expect(err, gospec.Equals, nil)
 		c.Expect(value, gospec.Equals, string("49FA050B4F8E735E"))
 	})
@@ -39,16 +45,22 @@ func BlowfishSpecs(c gospec.Context) {
 		value, err := DecryptBlowfish("0285B20516E533AA", blowfish_key)
 		c.Expect(err, gospec.Equals, nil)
 		c.Expect(value, gospec.Equals, ("0.00"))
+	})
 
-		value, err = DecryptBlowfish("599B4625D7390640", blowfish_key)
+	c.Specify("Decrypts Price with Blowfish", func() {
+		value, err := DecryptBlowfish("599B4625D7390640", blowfish_key)
 		c.Expect(err, gospec.Equals, nil)
 		c.Expect(value, gospec.Equals, ("0.12"))
+	})
 
-		value, err = DecryptBlowfish("91CCD93E8EBB89BF", blowfish_key)
+	c.Specify("Decrypts Price with Blowfish", func() {
+		value, err := DecryptBlowfish("91CCD93E8EBB89BF", blowfish_key)
 		c.Expect(err, gospec.Equals, nil)
 		c.Expect(value, gospec.Equals, ("123.45"))
+	})
 
-		value, err = DecryptBlowfish("49FA050B4F8E735E", blowfish_key)
+	c.Specify("Decrypts Price with Blowfish", func() {
+		value, err := DecryptBlowfish("49FA050B4F8E735E", blowfish_key)
 		c.Expect(err, gospec.Equals, nil)
 		c.Expect(value, gospec.Equals, ("567.89"))
 	})
